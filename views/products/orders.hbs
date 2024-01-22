@@ -1,0 +1,16 @@
+<div>
+    {{#if hasLength}}
+    {{#each orders}}
+    <h4>{{id}}</h4>
+    {{#each orderItems}}
+    <ul>
+        <li><b>{{product.title}}</b></li>
+        <li>{{quantity}}</li>
+    </ul>
+    {{/each}}
+
+    {{/each}}
+    {{else}}
+    <h2>no orders</h2>
+    {{/if}}
+</div>

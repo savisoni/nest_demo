@@ -1,0 +1,70 @@
+<header class="main-header">
+  <nav class="main-header__nav">
+    <ul class="main-header__item-list">
+      <li class="main-header__item"><a class="{{#if activeProducts}}active{{/if}}" href="/products">Products</a></li>
+      <li class="main-header__item"><a class="{{#if activeCart}}active{{/if}}"
+          href="{{#if isAuthenticated}}/cart{{else}}/local{{/if}}">Cart</a></li>
+      {{#if isAuthenticated}}
+      <li class="main-header__item"><a class="{{#if activeOrder}}active{{/if}}" href="/orders">Orders</a></li>
+      <li class="main-header__item"><a class="{{#if activeAddProduct}}active{{/if}}" href="/add-product">Add Product</a>
+      </li>
+      <li class="main-header__item"><a class="{{#if activeMyProduct}}active{{/if}}" href="/my-products">My Products</a>
+      </li>
+      {{/if}}
+
+    </ul>
+    <ul class="main-header__item-list">
+      <li class="main-header__item">
+
+        {{#if isAuthenticated}}
+
+        <form action="/users/logout" method="post">
+          <input type="hidden" name="_csrf" value="*">
+          <button type="submit">Logout</button>
+        </form>
+      </li>
+
+      <li class="main-header__item">
+        <a href="/users/profile" class="{{#if activeUserProfile}}active{{/if}}">User Profile</a>
+      </li>
+      {{else}}
+
+      <li class="main-header__item">
+        <a href="/users/login" class="active">Login</a>
+      </li>
+      <li class="main-header__item">
+        <a href="/users/signup" class="active">SignUp</a>
+      </li>
+
+      {{/if}}
+    </ul>
+
+  </nav>
+</header>
+
+<div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last col-md-auto">
+  <form action="/" method="get" autocomplete="off" novalidate id="filterForm">
+
+    {{! <button type="button" class="btn btn-light">Light</button> }}
+    {{! load SVG icon from http://tabler-icons.io/i/search --> }}
+
+    <div class="row" style="margin-top: 10px;">
+      <div class="col">
+        <button type="button" class="btn btn-light sortButton" name="createdAt">Sort by date & time</button>
+
+      </div>
+
+
+
+      <div class="col col-md-auto">
+
+        <input type="text" class="form-control" id="searchInput" placeholder="Search…" aria-label="Search in website"
+          name="resVal" />
+
+      </div>
+      <div class="col col-lg-2">
+        <button type="button" id="searchButton" class="btn btn-secondary">Search</button>
+      </div>
+    </div>
+  </form>
+</div>

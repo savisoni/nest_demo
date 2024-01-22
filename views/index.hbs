@@ -1,0 +1,76 @@
+{{!-- {{#if hasProducts}} --}}
+
+
+
+
+<div class="container">
+
+    <div class="row product-row">
+        {{#each products}}
+
+        <div class="col-3">
+            <div class="card mt-3" style="width: 18rem;">
+                <h5 class="card-title text-center">{{title}}</h5>
+
+                <img src="{{{imageUrl}}}" style="height:200px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{price}}</h5>
+
+                    <p class="card-text">{{description}}</p>
+                    <div class="row">
+                        <div class="col-6"> <a href="/products/{{id}}" class="btn btn-dark">Details</a></div>
+                        <div class="col-6">
+
+                            <button class="btn btn-dark addToCartBtn" data-id="{{id}}" data-title="{{title}}"
+                                data-description="{{description}}" data-price="{{price}}">Add to Cart</button>
+                            <input type="hidden" name="productId" value="{{id}}">
+                            <input type="hidden" name="isAuthenticated" value="{{../isAuthenticated}}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+
+</div>
+{{!-- <nav aria-label="Page navigation example">
+
+    <ul class="pagination justify-content-center">
+        {{#if (and (not (eq currentPage 1)) (not (eq previousPage 1)))}}
+        <li class="page-item">
+
+            <a class="page-link" href="?page=1">1</a>
+
+        </li>
+        {{/if}}
+
+
+        {{#if hasPreviousPage}}
+
+        <li class="page-item"><a class="page-link" href="?page={{previousPage}}">{{previousPage}}</a></li>
+        {{/if}}
+
+        {{#if hasNextPage}}
+
+        <li class="page-item"><a class="page-link" href="?page={{nextPage}}">{{nextPage}}</a></li>
+        {{/if}}
+
+        {{#if (and (not (eq lastPage currentPage)) (not (eq nextPage lastPage)))}}
+        <li class="page-item"><a class="page-link" href="?page={{lastPage}}">{{lastPage}}</a></li>
+
+
+        {{/if}}
+
+    </ul>
+</nav> --}}
+
+
+<br>
+
+{{!-- {{else}} --}}
+<h6>No Products found!</h6>
+{{!-- {{/if}} --}}
+<script src="/javascripts/add-to-cart.js"></script>
